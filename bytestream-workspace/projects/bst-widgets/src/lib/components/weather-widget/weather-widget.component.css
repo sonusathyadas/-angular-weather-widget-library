@@ -1,0 +1,56 @@
+
+.weather-table{
+    background-color: cornflowerblue;
+    border-radius: 10px;
+    height: 150px;
+    width: 350px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-color:white;
+    text-align: left;
+    color:white;
+}
+
+.weather-table #mainrow{
+    border-bottom: 1px solid white;
+}
+
+.weather-table #col1{
+    border-right: 1px solid white;
+    width: 45%;
+    padding-left: 10px;
+    font-size: 15px;
+    font-weight: lighter;
+    color:honeydew
+}
+
+.weather-table #col2{
+    border-left: 1px solid white;
+    width: 55%;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: lighter;
+    color:honeydew
+}
+
+.location-style{
+    color:white;
+    font-size: 22px;
+    padding-left:10px
+}
+.weather-style{
+    color:cornsilk;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+.weather-desc{
+    color:whitesmoke;
+    font-size: 16px;
+    font-weight: lighter;
+    padding-left: 10px;
+}
+.wind-title{
+    font-size: 16px;
+    font-weight: bold;
+}

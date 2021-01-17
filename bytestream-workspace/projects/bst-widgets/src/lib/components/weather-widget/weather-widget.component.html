@@ -1,0 +1,24 @@
+<div *ngIf="weatherdata" style="text-align: center;">
+    <table class="weather-table">
+        <tr id="mainrow">
+            <th colspan="2">
+                <span class="location-style">{{weatherdata.name}} ({{weatherdata.sys.country}})</span> &nbsp; -
+                <span class="weather-style">{{weatherdata.weather[0].main}}</span>
+                <br />
+                <span class="weather-desc">{{weatherdata.weather[0].description}}</span>
+            </th>
+        </tr>
+        <tr id="subrow">
+            <th id="col1">
+                <span>Temp : {{weatherdata.main.temp}}&#8451;</span><br />
+                <span>Feels like: {{weatherdata.main.feels_like}}&#8451;</span><br />
+                <span>Humidity : {{weatherdata.main.humidity}}%</span>
+            </th>
+            <th id="col2">
+                <span class="wind-title">Wind </span><br />
+                <span> speed : {{ (weatherdata.wind.speed * 60 *60)/1000}} Km/hr</span><br />
+                <span> Degree: {{weatherdata.wind.deg}}</span>
+            </th>
+        </tr>
+    </table>
+</div>

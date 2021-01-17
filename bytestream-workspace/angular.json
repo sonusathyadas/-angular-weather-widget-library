@@ -1,0 +1,164 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "bst-widgets": {
+      "projectType": "library",
+      "root": "projects/bst-widgets",
+      "sourceRoot": "projects/bst-widgets/src",
+      "prefix": "",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/bst-widgets/tsconfig.lib.json",
+            "project": "projects/bst-widgets/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bst-widgets/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bst-widgets/src/test.ts",
+            "tsConfig": "projects/bst-widgets/tsconfig.spec.json",
+            "karmaConfig": "projects/bst-widgets/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bst-widgets/tsconfig.lib.json",
+              "projects/bst-widgets/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "bst-web-spa": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/bst-web-spa",
+      "sourceRoot": "projects/bst-web-spa/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/bst-web-spa",
+            "index": "projects/bst-web-spa/src/index.html",
+            "main": "projects/bst-web-spa/src/main.ts",
+            "polyfills": "projects/bst-web-spa/src/polyfills.ts",
+            "tsConfig": "projects/bst-web-spa/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/bst-web-spa/src/favicon.ico",
+              "projects/bst-web-spa/src/assets"
+            ],
+            "styles": [
+              "projects/bst-web-spa/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/bst-web-spa/src/environments/environment.ts",
+                  "with": "projects/bst-web-spa/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bst-web-spa:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bst-web-spa:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bst-web-spa:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bst-web-spa/src/test.ts",
+            "polyfills": "projects/bst-web-spa/src/polyfills.ts",
+            "tsConfig": "projects/bst-web-spa/tsconfig.spec.json",
+            "karmaConfig": "projects/bst-web-spa/karma.conf.js",
+            "assets": [
+              "projects/bst-web-spa/src/favicon.ico",
+              "projects/bst-web-spa/src/assets"
+            ],
+            "styles": [
+              "projects/bst-web-spa/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bst-web-spa/tsconfig.app.json",
+              "projects/bst-web-spa/tsconfig.spec.json",
+              "projects/bst-web-spa/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/bst-web-spa/e2e/protractor.conf.js",
+            "devServerTarget": "bst-web-spa:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bst-web-spa:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "bst-widgets"
+}
