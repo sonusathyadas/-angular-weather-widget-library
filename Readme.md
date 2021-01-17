@@ -474,7 +474,77 @@ You have successfully created and tested the weather-widget library. Now, you ne
 9) The application will run on port number 8081. Open browser and navigate to 'http://localhost:8081`. After few seconds you will see the weather widget will display the current location weather data.
 
 ### Publish the package to NPM repository
-1) 
+1) Open the terminal in the project workspace folder. Run the following command to build the library project.
+
+    `ng build bst-widgets --prod`
+
+    > [!WARNING]
+    > To publish the library package to the NPM, you need to compile and build the project without the **Ivy** rendering engine.  Add the **--prod** flag to compile and build it without using the Ivy.
+ 
+2) The library project will be compiled into the *dist/bst-widgets* folder. Open the *package.json* file from the *dist/bst-widgets* folder. Update the package meta informations such as name, version, author name, git repository name etc.
+
+    ```json
+    {
+      "name": "bst-widgets",
+      "version": "1.0.0",
+      "author": "Sonu Sathyadas",
+      "description": "Sample weather widget angular library",
+      "repository": "https://github.com/sonusathyadas/-angular-weather-widget-library",
+      "peerDependencies": {
+        "@angular/common": "^11.0.9",
+        "@angular/core": "^11.0.9"
+      },
+      "dependencies": {
+        "tslib": "^2.0.0"
+      },
+      "main": "bundles/bst-widgets.umd.js",
+      "module": "fesm2015/bst-widgets.js",
+      "es2015": "fesm2015/bst-widgets.js",
+      "esm2015": "esm2015/bst-widgets.js",
+      "fesm2015": "fesm2015/bst-widgets.js",
+      "typings": "bst-widgets.d.ts",
+      "metadata": "bst-widgets.metadata.json",
+      "sideEffects": false
+    }
+    ```
+
+3) Open the terminal and move to *dist/bst-widgets* folder. Run the following command to login to the NPM registry.
+
+    `npm login`
+
+    > [!IMPORTANT]
+    > For login and publishing the application to https://npmjs.com, you need to create a new user account. If you alearedy have an account you can use it. To create a new user run the `npm adduser` command or create it directly fron the website.
+
+4) After you have successfully logged into the npm account, run the following command to publish the repository as a public package.
+
+    `npm publish --access public`
+
+5) After your package is successfully uploaded, you can check the package in your npmjs website.
+
+6) You are now able to install the package to any of your web project using `npm install --save bst-widgets`. To test it, open the terminal in the project workspace folder and run the command to install the package to the project. It will update the *package.json* file.
+
+    ```json
+    ...
+    "dependencies": {
+        "@angular/animations": "~11.0.5",
+        "@angular/common": "~11.0.5",
+        "@angular/compiler": "~11.0.5",
+        "@angular/core": "~11.0.5",
+        "@angular/forms": "~11.0.5",
+        "@angular/platform-browser": "~11.0.5",
+        "@angular/platform-browser-dynamic": "~11.0.5",
+        "@angular/router": "~11.0.5",
+        "bst-widgets": "^0.0.1",
+        "rxjs": "~6.6.0",
+        "tslib": "^2.0.0",
+        "zone.js": "~0.10.2"
+    },
+    ...
+    ```
+
+7) Run the application using the `ng serve bst-web-spa` command.
+
+
 
 
 
